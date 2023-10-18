@@ -15,7 +15,7 @@ export const data = {
   ],
 };
 
-const DoughnutChart = () => {
+const Chart = () => {
   return (
     <div
       id="mainGraphContainer"
@@ -60,4 +60,4 @@ const DoughnutChart = () => {
   );
 };
 
-export default DoughnutChart;
+export default Chart;
