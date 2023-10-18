@@ -18,7 +18,7 @@ export const data = {
 const Chart = () => {
   return (
     <div
-      id="mainGraphContainer"
+      id="mainGraph"
       className="mx-10 md:mx-2 p-5 rounded-2xl  min-w-[50%] md:max-w-[98%]  m-auto  my-5 border-2 drop-shadow bg-white "
     >
       <div className=" pb-6 m-auto mb-3 h-full flex flex-col justify-between items-between ">

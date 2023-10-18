@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import DataBar from './DataBar';
 import Addprofile from './Addprofile';
 import Chart from './Chart';
+import Graph from './Graph';
 
 const Dashboard = () => {
   return (
@@ -12,6 +13,7 @@ const Dashboard = () => {
       <div className="  lg:ml-[19%] w-screen p-4 ">
         <Navbar />
         <DataBar />
+        <Graph/>
         <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 my-5">
           <div className="min-w-[50%] ">
             <Chart />
