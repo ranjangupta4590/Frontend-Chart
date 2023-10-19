@@ -6,7 +6,7 @@ import likes from '../images/likes.png';
 
 const DataBar = () => {
     return (
-        <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1'>
+        <div className='grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-3'>
 
             <div id="rev-box" className="data ">
                 <img src={revenue} width={35} height={35} id="card-icon" alt="revenue" />

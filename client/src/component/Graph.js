@@ -4,7 +4,7 @@ import { Bar } from "react-chartjs-2";
 
 const Graph = () => {
 
-    const options = {
+    const scale = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
@@ -38,7 +38,7 @@ const Graph = () => {
             <div className="flex justify-between items-center">
               <div className="flex-[7]">
                 <h3 className="font-bold text-2xl">Activities</h3>
-                <div className="flex-[1] flex justify-start gap-2 items-center">
+                <div className="flex-[1] text-gray-500 flex justify-start gap-2 items-center">
                   <p>May - June 2021</p>
                   
                 </div>
@@ -67,7 +67,7 @@ const Graph = () => {
                   
                 ],
               }}
-              options={options}
+              scales={scale}
             />
           </div>
         </div>

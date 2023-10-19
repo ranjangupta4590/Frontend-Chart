@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import bg from "../images/blue_bg.png";
 import { BsGithub, BsDiscord, BsTwitter, BsLinkedin } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
+// import { signIn } from "next-auth/react";
+import { auth, provider } from '../component/Authentication/config';
+import { signInWithPopup } from "firebase/auth";
+import Dashboard from './Dashboard';
 
 const Signin = () => {
+
+    const [value, setValue] = useState('');
+    const handleClick = () => {
+        signInWithPopup(auth, provider).then((data) => {
+            setValue(data.user.email);
+            localStorage.setItem("email", data.user.email);
+        })
+    }
+
+    useEffect(() => {
+        setValue(localStorage.getItem('email'));
+    });
+
     return (
 
         <div className="flex  h-[100vh] bg-[#ffffff] ">
@@ -19,15 +36,15 @@ const Signin = () => {
                     </div>
                     <div className='flex pl-10'>
                         <ul className='flex justify-center items-center px-5 gap-4'>
-                          <li ><BsGithub className="text-white w-8 h-8 cursor-pointer"/></li>
-                          <li ><BsTwitter className="text-white w-8 h-8 cursor-pointer"/></li>
-                          <li ><BsLinkedin className="text-white w-8 h-8 cursor-pointer"/></li>
-                          <li ><BsDiscord className="text-white w-8 h-8 cursor-pointer"/></li>
+                            <li ><BsGithub className="text-white w-8 h-8 cursor-pointer" /></li>
+                            <li ><BsTwitter className="text-white w-8 h-8 cursor-pointer" /></li>
+                            <li ><BsLinkedin className="text-white w-8 h-8 cursor-pointer" /></li>
+                            <li ><BsDiscord className="text-white w-8 h-8 cursor-pointer" /></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             {/* Sign In */}
             <div className="flex flex-col  md:min-w-[50%] px-10 m-auto items-center justify-center">
                 <div>
@@ -35,17 +52,19 @@ const Signin = () => {
                     <p className="my-2 font-lato">Sign in to your account</p>
                 </div>
 
-                
+
                 <div className="flex  mt-3">
                     <div>
-                        <button
-                            type="button"
-                            className="flex items-center font-montserrat   bg-white  justify-center text-white px-4 py-3 text-xs mr-5 border rounded-md"
-                        //   onClick={() => signIn("google")}
-                        >
-                            <FcGoogle className="mr-2 text-center w-5 h-5" />
-                            <h1 className="text-[#858585]">Sign in with Google</h1>
-                        </button>
+                        {value ? <Dashboard /> :
+                            <button
+                                type="button"
+                                className="flex items-center font-montserrat   bg-white  justify-center text-white px-4 py-3 text-xs mr-5 border rounded-md"
+                                onClick={handleClick}
+                            >
+                                <FcGoogle className="mr-2 text-center w-5 h-5" />
+                                <h1 className="text-[#858585]">Sign in with Google</h1>
+                            </button>
+                        }
                     </div>
                     <button
                         type="button"
@@ -94,12 +113,12 @@ const Signin = () => {
                     </form>
                 </div>
                 <div className='justify-center items-center'>
-                <p className="text-center justify-center  my-3 text-sm font-medium">
-                    Don't have an account?{" "}
-                    <span className="text-[#494eed] cursor-pointer">
-                        Register here
-                    </span>
-                </p>
+                    <p className="text-center justify-center  my-3 text-sm font-medium">
+                        Don't have an account?{" "}
+                        <span className="text-[#494eed] cursor-pointer">
+                            Register here
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>

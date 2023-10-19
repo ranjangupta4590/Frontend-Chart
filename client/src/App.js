@@ -1,13 +1,14 @@
+import React from "react";
 import './App.css';
 import Dashboard from './component/Dashboard';
-// import Signin from './component/Signin';
+import Signin from "./component/Signin";
+function App({ children }) {
 
-function App() {
   return (
-    <div >
-      {/* <Signin/> */}
-      <Dashboard/>
-    </div>
+    <div className=' mx-10 my-10'>
+       <Dashboard/> 
+     {/* <Signin/> */}
+    </div> 
   );
 }
 
